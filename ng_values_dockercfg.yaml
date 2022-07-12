@@ -1,8 +1,8 @@
 name: harness-quickstart
-replicas: 4
+replicas: 3
 
-image: <+artifact.image>
-dockercfg: <+artifact.imagePullSecret>
+image: nginx
+# dockercfg: <+artifact.imagePullSecret>
 
 createNamespace: true
 namespace: <+infra.namespace>
@@ -21,8 +21,8 @@ serviceTargetPort: 80
 # The following two maps, config and secrets, are put into a ConfigMap
 # and a Secret, respectively.
 # Both are added to the container environment in podSpec as envFrom source.
-env:
-  config:
-    key1: value1
-  secrets:
-    key2: value2
+#env:
+  #config:
+    #key1: value1
+  #secrets:
+    #key2: value2

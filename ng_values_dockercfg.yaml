@@ -1,7 +1,7 @@
 name: harness-quickstart
 replicas: 3
 
-image: nginx:1.22
+image: nginx:1.23.0
 
 
 createNamespace: true

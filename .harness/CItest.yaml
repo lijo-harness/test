@@ -62,6 +62,9 @@ pipeline:
                               image: ww
                               shell: Sh
                               command: w
+                            when:
+                              stageStatus: Failure
+                            failureStrategies: []
           infrastructure:
             type: KubernetesDirect
             spec:

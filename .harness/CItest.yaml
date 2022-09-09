@@ -1,0 +1,49 @@
+pipeline:
+  name: CI-test
+  identifier: CItest
+  projectIdentifier: bootcampcilijo
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.harnessgitconnector
+        repoName: test
+        build: <+input>
+  stages:
+    - stage:
+        name: test-stage
+        identifier: teststage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - parallel:
+                  - step:
+                      type: Run
+                      name: run1
+                      identifier: run1
+                      spec:
+                        connectorRef: account.harnessImage
+                        image: docker
+                        shell: Sh
+                        command: echo "1"
+                  - step:
+                      type: Run
+                      name: run2
+                      identifier: run2
+                      spec:
+                        connectorRef: account.harnessImage
+                        image: docker
+                        shell: Sh
+                        command: echoe "2"
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8testclusteraccountlevel
+              namespace: ci-test
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux

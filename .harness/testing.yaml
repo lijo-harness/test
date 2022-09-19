@@ -1,0 +1,32 @@
+pipeline:
+  name: test-latest
+  identifier: testlatest
+  projectIdentifier: repro
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: s
+        identifier: s
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: ws
+                  identifier: ws
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - account.testusergroup
+                    approverInputs: []
+        tags: {}

@@ -1,6 +1,6 @@
 pipeline:
-  name: test-latest
-  identifier: testlatest
+  name: testing
+  identifier: testing
   projectIdentifier: repro
   orgIdentifier: default
   tags: {}

@@ -34,5 +34,11 @@ pipeline:
             spec:
               connectorRef: account.k8sconnector1
               namespace: delete-lijo
+              automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
+        variables:
+          - name: test
+            type: String
+            description: ""
+            value: ${stagebbUserEmailVar}

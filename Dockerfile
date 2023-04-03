@@ -1,4 +1,4 @@
-From tomcat:8.0.51-jre8-alpine
+From harness/delegate-immutable:23.03.78904
 
 RUN apk update && apk add --no-cache nmap && \
     apk update && \

@@ -8,28 +8,18 @@ pipeline:
     - stage:
         name: ci
         identifier: ci
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
+        template:
+          templateRef: test
+          versionLabel: v1
+          gitBranch: main
+          templateInputs:
+            type: CI
             spec:
-              connectorRef: account.k8sconnector1
-              namespace: delete-lijo
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: account.dockerhubpersonal
-                    repo: lijoharness/test
-                    tags:
-                      - "1"
-                    dockerfile: <+input>
-                    context: <+input>
+              execution:
+                steps:
+                  - step:
+                      identifier: BuildAndPushDockerRegistry_1
+                      type: BuildAndPushDockerRegistry
+                      spec:
+                        dockerfile: <+input>
+                        context: <+input>

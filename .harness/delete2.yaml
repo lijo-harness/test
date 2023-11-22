@@ -1,0 +1,34 @@
+pipeline:
+  name: delete2
+  identifier: delete2
+  projectIdentifier: CIrepro
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: ci
+        identifier: ci
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8sconnector1
+              namespace: delete-lijo
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.dockerhubpersonal
+                    repo: lijoharness/test
+                    tags:
+                      - "1"
+                    dockerfile: <+input>

@@ -32,3 +32,4 @@ pipeline:
                     tags:
                       - "1"
                     dockerfile: <+input>
+                    context: <+input>

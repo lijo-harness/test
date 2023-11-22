@@ -1,0 +1,32 @@
+template:
+  name: test
+  type: Stage
+  projectIdentifier: CIrepro
+  orgIdentifier: default
+  spec:
+    type: CI
+    spec:
+      cloneCodebase: false
+      infrastructure:
+        type: KubernetesDirect
+        spec:
+          connectorRef: account.k8sconnector1
+          namespace: delete-lijo
+          automountServiceAccountToken: true
+          nodeSelector: {}
+          os: Linux
+      execution:
+        steps:
+          - step:
+              type: BuildAndPushDockerRegistry
+              name: BuildAndPushDockerRegistry_1
+              identifier: BuildAndPushDockerRegistry_1
+              spec:
+                connectorRef: account.dockerhubpersonal
+                repo: lijoharness/test
+                tags:
+                  - "1"
+                dockerfile: <+input>
+                context: <+input>
+  identifier: test
+  versionLabel: v1

@@ -34,12 +34,32 @@ pipeline:
                   name: Http_1
                   identifier: Http_1
                   spec:
-                    url: https://google.com
-                    method: GET
+                    url: https://api.github.com/repos/regions-appdev/fsc-bridge-repository/deployments
+                    method: POST
                     headers:
                       - key: X-GitHub-Api-Version
                         value: "2022-11-28"
+                      - key: Accept
+                        value: application/vnd.github+json
+                      - key: Authorization
+                        value: Bearer <+secrets.getValue("Github_PAT")>
                     inputVariables: []
                     outputVariables: []
+                    assertion: <+httpResponseCode> == 201
+                    requestBody: |-
+                      {
+                        "ref": "<+eventPayload.ref>",
+                        "environment": "devops-poc/integrate",
+                        "auto_merge": false,
+                        "required_contexts": [
+                          "build",
+                          "Test Results",
+                          "approved"
+                        ],
+                        "payload": {
+                          "jobid": "<+eventPayload.jobid>",
+                          "issue": "<+eventPayload.issue>"
+                        }
+                      }
                   timeout: 10s
         tags: {}

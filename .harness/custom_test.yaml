@@ -29,4 +29,17 @@ pipeline:
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
+              - step:
+                  type: Http
+                  name: Http_1
+                  identifier: Http_1
+                  spec:
+                    url: https://google.com
+                    method: GET
+                    headers:
+                      - key: X-GitHub-Api-Version
+                        value: "2022-11-28"
+                    inputVariables: []
+                    outputVariables: []
+                  timeout: 10s
         tags: {}

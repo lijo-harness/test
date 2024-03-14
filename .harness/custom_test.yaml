@@ -26,7 +26,7 @@ pipeline:
                         script: |-
                           pwd
                           ls
-                          var1="test"
+                          var1="811308774569,217178466908,188534545676,358401652911,768071153763"
                     environmentVariables: []
                     outputVariables:
                       - name: var1

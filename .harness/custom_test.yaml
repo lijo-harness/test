@@ -50,6 +50,8 @@ pipeline:
 
                           echo <+execution.steps.ShellScript_1.output.outputVariables.var1>
 
+                          nnnnamespace="test_namespace"
+
                           exit 0
                     environmentVariables: []
                     outputVariables: []

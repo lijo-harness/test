@@ -26,6 +26,7 @@ pipeline:
                         script: |-
                           pwd
                           ls
+                          var1="test"
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m

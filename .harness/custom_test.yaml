@@ -44,7 +44,7 @@ pipeline:
                       type: Inline
                       spec:
                         script: |-
-                          ehco <+pipeline.stages.ss.spec.execution.steps.ShellScript_1.output.outputVariables.var1>
+                          echo <+pipeline.stages.ss.spec.execution.steps.ShellScript_1.output.outputVariables.var1>
 
                           echo "#########"
 

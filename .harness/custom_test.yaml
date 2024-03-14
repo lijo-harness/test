@@ -54,7 +54,10 @@ pipeline:
 
                           exit 0
                     environmentVariables: []
-                    outputVariables: []
+                    outputVariables:
+                      - name: nnnnamespace
+                        type: String
+                        value: nnnnamespace
                   timeout: 10m
               - step:
                   type: Http

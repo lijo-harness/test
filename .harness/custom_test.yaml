@@ -28,7 +28,10 @@ pipeline:
                           ls
                           var1="test"
                     environmentVariables: []
-                    outputVariables: []
+                    outputVariables:
+                      - name: var1
+                        type: String
+                        value: ""
                   timeout: 10m
               - step:
                   type: Http

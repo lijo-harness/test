@@ -31,7 +31,7 @@ pipeline:
                     outputVariables:
                       - name: var1
                         type: String
-                        value: ""
+                        value: var1
                   timeout: 10m
               - step:
                   type: Http

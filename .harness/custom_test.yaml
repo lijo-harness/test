@@ -49,6 +49,8 @@ pipeline:
                           echo "#########"
 
                           echo <+execution.steps.ShellScript_1.output.outputVariables.var1>
+
+                          exit 0
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m

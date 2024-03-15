@@ -1,5 +1,5 @@
 pipeline:
-  name: custom_test_new1
+  name: custom_test_new
   identifier: custom_test
   projectIdentifier: CIrepro
   orgIdentifier: default

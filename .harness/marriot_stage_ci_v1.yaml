@@ -1,0 +1,29 @@
+template:
+  name: marriot_stage_ci
+  identifier: marriot_stage_ci
+  versionLabel: v1
+  type: Stage
+  tags: {}
+  spec:
+    type: CI
+    spec:
+      cloneCodebase: true
+      infrastructure:
+        type: KubernetesDirect
+        spec:
+          connectorRef: account.k8sconnector1
+          namespace: delete-lijo
+          automountServiceAccountToken: true
+          nodeSelector: {}
+          os: Linux
+      execution:
+        steps:
+          - step:
+              type: Run
+              name: Run_1
+              identifier: Run_1
+              spec:
+                connectorRef: account.harnessImage
+                image: nginx
+                shell: Sh
+                command: pwd

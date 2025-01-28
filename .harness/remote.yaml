@@ -1,0 +1,43 @@
+pipeline:
+  name: remote
+  identifier: remote
+  projectIdentifier: CIrepro
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8sconnector1
+              namespace: delete-lijo
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: alpine
+                    shell: Sh
+                    command: pwd
+  variables:
+    - name: var1
+      type: String
+      description: ""
+      required: false
+      value: <+input>.default(small)
